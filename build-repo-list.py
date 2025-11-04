@@ -21,13 +21,16 @@ def get_remote_url(git_dir):
 	config_path = git_dir / '.git' / 'config'
 	if not config_path.exists():
 		return ''
-	config = configparser.ConfigParser()
+	config = configparser.ConfigParser(strict=False)
 	try:
+		#print(f"Reading {config_path}...")
 		config.read(config_path)
 		if 'remote "origin"' in config:
 			return config['remote "origin"'].get('url', '')
-	except Exception:
-		pass
+		else:
+			print(f"No remote 'origin' found in {config_path}")
+	except Exception as e:
+		print(f"Failed to read remote 'origin' for {config_path} - reason: {e}")
 	return ''
 
 def main():

@@ -8,7 +8,7 @@ C:\gitlab\libraries\mapbox-gl-js,https://github.com/mapbox/mapbox-gl-js.git,mapb
 C:\gitlab\libraries\react-map-gl,https://github.com/visgl/react-map-gl.git,react-map-gl
 C:\gitlab\mobile\app-penelope-reactnative,https://gitlab.transics-cicd.aws.zf.com/mobile/app-penelope-reactnative.git,app-penelope-reactnative
 C:\gitlab\mobile\app-penext,https://gitlab.transics-cicd.aws.zf.com/mobile/app-penext.git,app-penext
-C:\gitlab\mobile\cargo-app-automation,,cargo-app-automation
+C:\gitlab\mobile\cargo-app-automation,https://gitlab.transics-cicd.aws.zf.com/mobile/cargo-app-automation.git,cargo-app-automation
 C:\gitlab\mobile\cargo-app-bose-automation,https://gitlab.transics-cicd.aws.zf.com/mobile/cargo-app-bose-automation.git,cargo-app-bose-automation
 C:\gitlab\mobile\core-drivermobile-bff,https://gitlab.transics-cicd.aws.zf.com/core/mobile/core-drivermobile-bff.git,core-drivermobile-bff
 C:\gitlab\mobile\core-mobilepush-bff,https://gitlab.transics-cicd.aws.zf.com/core/mobile/core-mobilepush-bff.git,core-mobilepush-bff
@@ -47,17 +47,17 @@ C:\gitlab\odyssey-core-layer\doc-external-oas-odyssey,https://gitlab.transics-ci
 C:\gitlab\odyssey-core-layer\doc-oas-odyssey,https://gitlab.transics-cicd.aws.zf.com/framework/doc-oas-odyssey.git,doc-oas-odyssey
 C:\gitlab\odyssey-core-layer\Framework\lib-extensions-aws-sqs,https://gitlab.transics-cicd.aws.zf.com/core/framework/lib-extensions-aws-sqs.git,lib-extensions-aws-sqs
 C:\gitlab\odyssey-core-layer\framework-core-net,https://gitlab.transics-cicd.aws.zf.com/framework/framework-core-net.git,framework-core-net
-C:\gitlab\odyssey-core-layer\gitlab-cicd-templates,,gitlab-cicd-templates
+C:\gitlab\odyssey-core-layer\gitlab-cicd-templates,https://gitlab.transics-cicd.aws.zf.com/cloud-services/shared/gitlab-ci/gitlab-cicd-templates.git,gitlab-cicd-templates
 C:\gitlab\odyssey-core-layer\import-user-management-data,https://gitlab.transics-cicd.aws.zf.com/core/master-data-import/import-user-management-data.git,import-user-management-data
 C:\gitlab\odyssey-core-layer\kubectl-launcher,https://gitlab.transics-cicd.aws.zf.com/core/playground/cooper-playground/scripts/kubectl-launcher.git,kubectl-launcher
 C:\gitlab\odyssey-core-layer\lib-extensions-aws-sqs,https://gitlab.transics-cicd.aws.zf.com/core/framework/lib-extensions-aws-sqs.git,lib-extensions-aws-sqs
 C:\gitlab\odyssey-core-layer\lib-extensions-healthchecks,https://gitlab.transics-cicd.aws.zf.com/core/framework/lib-extensions-healthchecks.git,lib-extensions-healthchecks
 C:\gitlab\odyssey-core-layer\lib-extensions-sensor-client,https://gitlab.transics-cicd.aws.zf.com/framework/lib-extensions-sensor-client.git,lib-extensions-sensor-client
 C:\gitlab\odyssey-core-layer\lib-extensions-unleash,https://gitlab.transics-cicd.aws.zf.com/core/framework/lib-extensions-unleash.git,lib-extensions-unleash
-C:\gitlab\odyssey-core-layer\lib-extensions-who-sees-what,,lib-extensions-who-sees-what
+C:\gitlab\odyssey-core-layer\lib-extensions-who-sees-what,https://gitlab.transics-cicd.aws.zf.com/core/framework/lib-extensions-who-sees-what.git,lib-extensions-who-sees-what
 C:\gitlab\odyssey-core-layer\lib-lamba-net-wrapper,https://gitlab.transics-cicd.aws.zf.com/framework/lib-lamba-net-wrapper.git,lib-lamba-net-wrapper
 C:\gitlab\odyssey-core-layer\module-alarm-center,https://gitlab.transics-cicd.aws.zf.com/core/alarmcenter/module-alarm-center.git,module-alarm-center
-C:\gitlab\odyssey-core-layer\rat-2,,rat-2
+C:\gitlab\odyssey-core-layer\rat-2,https://gitlab.transics-cicd.aws.zf.com/core/assettracking/module-realtime-asset-tracking.git,rat-2
 C:\gitlab\odyssey-core-layer\terraform-gitlab-automation,https://gitlab.transics-cicd.aws.zf.com/cloud-services/gitlab/terraform-gitlab-automation.git,terraform-gitlab-automation
 C:\gitlab\odyssey-core-layer\terraform-module-aws-api-gateway-lambda,https://gitlab.transics-cicd.aws.zf.com/cloud-services/shared/terraform/terraform-module-aws-api-gateway-lambda.git,terraform-module-aws-api-gateway-lambda
 C:\gitlab\odyssey-core-layer\terraform-module-aws-lambda,https://gitlab.transics-cicd.aws.zf.com/cloud-services/shared/terraform/terraform-module-aws-lambda.git,terraform-module-aws-lambda
@@ -80,7 +80,7 @@ C:\gitlab\odyssey-ui-layer\mf-react-notifications,https://gitlab.transics-cicd.a
 C:\gitlab\odyssey-ui-layer\mf-react-places,https://gitlab.transics-cicd.aws.zf.com/odyssey-ui-layer/mf-react-places.git,mf-react-places
 C:\gitlab\odyssey-ui-layer\mf-react-tdm,https://gitlab.transics-cicd.aws.zf.com/odyssey-ui-layer/mf-react-tdm.git,mf-react-tdm
 C:\gitlab\odyssey-ui-layer\mf-react-topbar,https://gitlab.transics-cicd.aws.zf.com/odyssey-ui-layer/mf-react-topbar.git,mf-react-topbar
-C:\gitlab\odyssey-ui-layer\mf-react-track-and-trace,,mf-react-track-and-trace
+C:\gitlab\odyssey-ui-layer\mf-react-track-and-trace,https://gitlab.transics-cicd.aws.zf.com/odyssey-ui-layer/mf-react-track-and-trace.git,mf-react-track-and-trace
 C:\gitlab\odyssey-ui-layer\mf-react-trips,https://gitlab.transics-cicd.aws.zf.com/odyssey-ui-layer/mf-react-trips.git,mf-react-trips
 C:\gitlab\odyssey-ui-layer\mf-react-unit-management,https://gitlab.transics-cicd.aws.zf.com/odyssey-ui-layer/unit-management/mf-react-unit-management.git,mf-react-unit-management
 C:\gitlab\odyssey-ui-layer\mf-react-workflows,https://gitlab.transics-cicd.aws.zf.com/odyssey-ui-layer/mf-react-workflows.git,mf-react-workflows
@@ -101,6 +101,7 @@ C:\gitlab\tools\awsLogin,https://gitlab.transics-cicd.aws.zf.com/snippets/298.gi
 C:\gitlab\tools\DotNet8-VISUG-2023,https://github.com/Djohnnie/DotNet8-VISUG-2023.git,DotNet8-VISUG-2023
 C:\gitlab\tools\eventbridge-cli,https://github.com/spezam/eventbridge-cli.git,eventbridge-cli
 C:\gitlab\tools\jsontools,https://gitlab.transics-cicd.aws.zf.com/peter.dierckx/jsontools.git,jsontools
+C:\gitlab\tools\python-scripts,,python-scripts
 C:\gitlab\tools\rat-randomgeopointsgenerator,https://gitlab.transics-cicd.aws.zf.com/sandbox/rat-randomgeopointsgenerator.git,rat-randomgeopointsgenerator
 C:\gitlab\tools\rusty-spider,https://gitlab.transics-cicd.aws.zf.com/cloud-services/zeppelin/spider/rusty-spider.git,rusty-spider
 C:\gitlab\tools\sky\SkyMessageParser,https://tfs.corp.transics.com/tfs/Transics/TX/_git/SkyMessageParser,SkyMessageParser
