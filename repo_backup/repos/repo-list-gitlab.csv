@@ -101,7 +101,7 @@ C:\gitlab\tools\awsLogin,https://gitlab.transics-cicd.aws.zf.com/snippets/298.gi
 C:\gitlab\tools\DotNet8-VISUG-2023,https://github.com/Djohnnie/DotNet8-VISUG-2023.git,DotNet8-VISUG-2023
 C:\gitlab\tools\eventbridge-cli,https://github.com/spezam/eventbridge-cli.git,eventbridge-cli
 C:\gitlab\tools\jsontools,https://gitlab.transics-cicd.aws.zf.com/peter.dierckx/jsontools.git,jsontools
-C:\gitlab\tools\python-scripts,,python-scripts
+C:\gitlab\tools\python-scripts,https://github.com/PeterDierckx78/MyPythonScripts.git,python-scripts
 C:\gitlab\tools\rat-randomgeopointsgenerator,https://gitlab.transics-cicd.aws.zf.com/sandbox/rat-randomgeopointsgenerator.git,rat-randomgeopointsgenerator
 C:\gitlab\tools\rusty-spider,https://gitlab.transics-cicd.aws.zf.com/cloud-services/zeppelin/spider/rusty-spider.git,rusty-spider
 C:\gitlab\tools\sky\SkyMessageParser,https://tfs.corp.transics.com/tfs/Transics/TX/_git/SkyMessageParser,SkyMessageParser
