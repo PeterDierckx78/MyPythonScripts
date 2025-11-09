@@ -1,0 +1,1 @@
+pyinstaller --onefile --windowed --add-data repos;repos repo-launcher.py

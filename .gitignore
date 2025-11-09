@@ -1,0 +1,8 @@
+# Ignore Python build and distribution folders
+build/
+dist/
+*.egg-info/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd

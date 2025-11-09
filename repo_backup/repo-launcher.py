@@ -4,8 +4,13 @@ import threading
 import subprocess
 import tkinter as tk
 from tkinter import ttk, messagebox
+import sys
 
-REPOS_DIR = os.path.join(os.path.dirname(__file__), 'repos')
+if getattr(sys, 'frozen', False):
+    BASE_DIR = sys._MEIPASS
+else:
+    BASE_DIR = os.path.dirname(__file__)
+REPOS_DIR = os.path.join(BASE_DIR, 'repos')
 
 class RepoLauncher(tk.Tk):
     def __init__(self):
@@ -35,19 +40,19 @@ class RepoLauncher(tk.Tk):
         frame = ttk.Frame(self)
         frame.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
 
-        # Table with 'Restored' column moved to column 3
-        columns = ('index', 'repo_name', 'restored', 'local', 'remote')
+        # Table with 'Restored' column after 'index' and before 'repo_name'
+        columns = ('index', 'restored', 'repo_name', 'local', 'remote')
         self.tree = ttk.Treeview(frame, columns=columns, show='tree headings', height=20)
         self.tree.heading('#0', text='Select')
         self.tree.heading('index', text='Index')
-        self.tree.heading('repo_name', text='Repo Name')
         self.tree.heading('restored', text='Restored')
+        self.tree.heading('repo_name', text='Repo Name')
         self.tree.heading('local', text='Local Folder')
         self.tree.heading('remote', text='Remote URL')
         self.tree.column('#0', width=50, minwidth=20, stretch=False, anchor='center')
         self.tree.column('index', width=50, minwidth=20, stretch=False, anchor='center')
-        self.tree.column('repo_name', width=220, minwidth=120, stretch=True, anchor='w')
         self.tree.column('restored', width=80, minwidth=50, stretch=False, anchor='center')
+        self.tree.column('repo_name', width=220, minwidth=120, stretch=True, anchor='w')
         self.tree.column('local', width=180, minwidth=80, stretch=True, anchor='w')
         self.tree.column('remote', width=220, minwidth=120, stretch=True, anchor='w')
         self.tree.grid(row=0, column=0, columnspan=6, sticky='nsew')
@@ -61,7 +66,7 @@ class RepoLauncher(tk.Tk):
             self.check_vars.append(False)
             restored = 'Yes' if os.path.exists(repo['local_path']) else 'No'
             tags = ('restored_gray',) if restored == 'Yes' else ()
-            self.tree.insert('', 'end', iid=str(i), text='[ ]', values=(i+1, repo['repo_name'], restored, repo['local_path'], repo['remote_url']), tags=tags)
+            self.tree.insert('', 'end', iid=str(i), text='[ ]', values=(i+1, restored, repo['repo_name'], repo['local_path'], repo['remote_url']), tags=tags)
         self._update_checkbox_text()
         self.tree.bind('<ButtonRelease-1>', self._on_tree_click)
 
@@ -115,20 +120,22 @@ class RepoLauncher(tk.Tk):
 
     def _restore_selected(self):
         selected = [i for i, checked in enumerate(self.check_vars) if checked]
-        if not selected:
-            messagebox.showinfo('No Selection', 'Please select at least one repository to restore.')
+        # Filter out already restored repos and those without remote_url
+        to_restore = [i for i in selected if not os.path.exists(self.repos[i]['local_path']) and self.repos[i].get('remote_url')]
+        if not to_restore:
+            messagebox.showinfo('No Selection', 'No selected repositories need to be restored or are missing a remote URL.')
             return
         # Clear previous progress bars
         for widget in self.progress_frame.winfo_children():
             widget.destroy()
         self.progress_bars = []
-        for idx in selected:
+        for idx in to_restore:
             pb = ttk.Progressbar(self.progress_frame, length=300, mode='determinate')
             pb.grid(row=idx, column=0, sticky='w', pady=2)
-            label = ttk.Label(self.progress_frame, text=f"Cloning {self.repos[idx]['local_path']}")
+            label = ttk.Label(self.progress_frame, text=f"Cloning {self.repos[idx]['local_path']}" if self.repos[idx].get('remote_url') else f"No remote_url for {self.repos[idx]['local_path']}")
             label.grid(row=idx, column=1, sticky='w')
             self.progress_bars.append(pb)
-        threading.Thread(target=self._run_clone, args=(selected,), daemon=True).start()
+        threading.Thread(target=self._run_clone, args=(to_restore,), daemon=True).start()
         # After starting restore, update the 'Restored' column for all rows
         self.after(1000, self._refresh_restored_column)
 
@@ -137,7 +144,7 @@ class RepoLauncher(tk.Tk):
             restored = 'Yes' if os.path.exists(repo['local_path']) else 'No'
             values = list(self.tree.item(str(i), 'values'))
             if len(values) == 5:
-                values[2] = restored  # 'restored' is now at index 2
+                values[1] = restored  # 'restored' is now at index 1
                 tags = ('restored_gray',) if restored == 'Yes' else ()
                 self.tree.item(str(i), values=values, tags=tags)
 
