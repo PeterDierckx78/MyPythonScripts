@@ -70,8 +70,6 @@ class RepoLauncher(tk.Tk):
         self._update_checkbox_text()
         self.tree.bind('<ButtonRelease-1>', self._on_tree_click)
 
-
-
         # Enable All and Clear All buttons side by side on the left
         button_frame = ttk.Frame(frame)
         button_frame.grid(row=1, column=0, columnspan=2, sticky='w', pady=10)

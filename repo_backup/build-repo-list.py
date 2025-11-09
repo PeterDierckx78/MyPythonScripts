@@ -65,15 +65,44 @@ def main():
 	folder_name = root_folder.name.lower()
 	output_file = output_folder / f'repo-list-{folder_name}.csv'
 
+	# Read existing repos if CSV exists
+	existing = {}
+	if output_file.exists():
+		with open(output_file, newline='', encoding='utf-8') as csvfile:
+			reader = csv.DictReader(csvfile)
+			for row in reader:
+				existing[row['local_path']] = row
+
+	# Find new repos and update/add them
 	repos = find_git_repos(root_folder, max_depth=max_levels)
+	newly_added = []
+	for repo_path in repos:
+		remote_url = get_remote_url(repo_path)
+		repo_name = repo_path.name
+		key = str(repo_path)
+		if key not in existing:
+			newly_added.append({'local_path': key, 'remote_url': remote_url, 'repo_name': repo_name})
+		existing[key] = {
+			'local_path': key,
+			'remote_url': remote_url,
+			'repo_name': repo_name
+		}
+
+	# Write merged result
 	with open(output_file, 'w', newline='', encoding='utf-8') as csvfile:
-		writer = csv.writer(csvfile)
-		writer.writerow(['local_path', 'remote_url', 'repo_name'])
-		for repo_path in repos:
-			remote_url = get_remote_url(repo_path)
-			repo_name = repo_path.name
-			writer.writerow([str(repo_path), remote_url, repo_name])
+		writer = csv.DictWriter(csvfile, fieldnames=['local_path', 'remote_url', 'repo_name'])
+		writer.writeheader()
+		for row in existing.values():
+			writer.writerow(row)
+   
 	print(f"CSV file written: {output_file.resolve()}")
+ 
+	if newly_added:
+		print("Newly added repos:")
+		for repo in newly_added:
+			print(f"  {repo['local_path']} | {repo['remote_url']} | {repo['repo_name']}")
+	else:
+		print("No new repos added.")
 
 if __name__ == '__main__':
 	main()
