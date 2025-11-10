@@ -37,7 +37,6 @@ def main():
 	import sys
 	# Parse arguments
 	# Usage: python build-repo-list.py <path-to-root-folder> [max-levels] [output-folder]
-	import sys
 	if len(sys.argv) > 1:
 		root_folder = Path(sys.argv[1]).resolve()
 	else:
