@@ -55,24 +55,10 @@ class RepoLauncher(tk.Tk):
 
 
 
+
     def _build_ui(self):
         frame = ttk.Frame(self)
         frame.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
-        # # Configure grid weights so only the table and output expand
-        # for r in range(5):
-        #     frame.rowconfigure(r, weight=0)
-        # frame.rowconfigure(1, weight=1)  # Table expands
-        # frame.rowconfigure(4, weight=1)  # Output expands
-        # for c in range(6):
-        #     frame.columnconfigure(c, weight=1)
-
-        # # Configure grid weights so only the table and output expand
-        # for r in range(5):
-        #     frame.rowconfigure(r, weight=0)
-        # frame.rowconfigure(1, weight=1)  # Table expands
-        # frame.rowconfigure(4, weight=1)  # Output expands
-        # for c in range(6):
-        #     frame.columnconfigure(c, weight=1)
 
         # Search field
         search_frame = ttk.Frame(frame)
@@ -86,9 +72,11 @@ class RepoLauncher(tk.Tk):
         search_frame.columnconfigure(1, weight=1)
         self.search_var.trace_add('write', self._filter_repos)
 
-        # Table with 'Restored' column after 'index' and before 'repo_name'
+        # Table with vertical scrollbar
         columns = ('index', 'restored', 'repo_name', 'local', 'remote')
-        self.tree = ttk.Treeview(frame, columns=columns, show='tree headings', height=20)
+        tree_frame = ttk.Frame(frame)
+        tree_frame.grid(row=0, column=0, columnspan=6, sticky='nsew')
+        self.tree = ttk.Treeview(tree_frame, columns=columns, show='tree headings', height=20)
         self.tree.heading('#0', text='Select')
         self.tree.heading('index', text='Index')
         self.tree.heading('restored', text='Restored')
@@ -101,12 +89,18 @@ class RepoLauncher(tk.Tk):
         self.tree.column('repo_name', width=220, minwidth=120, stretch=True, anchor='w')
         self.tree.column('local', width=180, minwidth=80, stretch=True, anchor='w')
         self.tree.column('remote', width=220, minwidth=120, stretch=True, anchor='w')
-        self.tree.grid(row=0, column=0, columnspan=6, sticky='nsew')
+
+        # Add vertical scrollbar
+        tree_scrollbar = ttk.Scrollbar(tree_frame, orient='vertical', command=self.tree.yview)
+        self.tree.configure(yscrollcommand=tree_scrollbar.set)
+        self.tree.grid(row=0, column=0, sticky='nsew')
+        tree_scrollbar.grid(row=0, column=1, sticky='ns')
+        tree_frame.rowconfigure(0, weight=1)
+        tree_frame.columnconfigure(0, weight=1)
 
         # Add checkboxes and progress bars
         self.check_vars = []
         self.progress_bars = []
-        # Configure tag for gray background for restored rows
         self.tree.tag_configure('restored_gray', background='#e0e0e0')
         for i, repo in enumerate(self.repos):
             self.check_vars.append(False)
